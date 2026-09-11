@@ -63,11 +63,11 @@ Hãy sử dụng **4 Lenses** dưới đây để quét qua hoạt động vận
 ### 📝 List bài toán của tôi:
 | # | Subsidiary (VinFast/Xanh SM...) | Lens | Mô tả ngắn bài toán |
 |---|----------------------------------|------|---------------------|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
-| 4 | | | |
-| 5 | | | |
+| 1 |Xanh SM |Lặp lại |Tài xế báo sự cố pin giữa đường, điều phối viên phải tìm trạm sạc phù hợp |
+| 2 |VinFast|Tốn thời gian |So khớp hóa đơn sạc điện đối tác |
+| 3 |Vinhomes |AI-upgrade  |Phân loại phản ánh cư dân mất nước, hỏng điện, ồn ào |
+| 4 |Vinmec |Pain từ người khác |Bác sĩ tốn thời gian viết tóm tắt hồ sơ xuất viện |
+| 5 |Vinpearl |Tốn thời gian |Xử lý review/đánh giá khách hàng và phát hiện vấn đề nghiêm trọng |
 
 ---
 
@@ -75,26 +75,94 @@ Hãy sử dụng **4 Lenses** dưới đây để quét qua hoạt động vận
 
 Chọn **top 3 bài toán** từ danh sách trên và hoàn thiện **3 Quick Problem Cards** dưới đây (10 phút/card).
 
-```
+### Quick Problem Card #1
+```text
 ┌─────────────────────────────────────────────────────────────┐
-│ QUICK PROBLEM CARD #___                                     │
+│ QUICK PROBLEM CARD #1                                       │
 │                                                             │
-│ Bài toán (1 câu): ________________________________________  │
-│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
+│ Bài toán: Tài xế Xanh SM báo sự cố pin giữa đường cần được  │
+│ hướng dẫn trạm sạc gần nhất và phương án cứu hộ phù hợp.    │
+│ Công ty thành viên: [ ] VinFast  [x] Xanh SM  [ ] Vinhomes  │
 │                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
 │                                                             │
-│ Ai đang đau (Actor)? ______________________________________ │
+│ Ai đang đau (Actor)? Điều phối viên và tài xế khi xe đang   │
+│ phải xử lý khẩn cấp trong thời gian thực.                   │
 │                                                             │
 │ Workflow thủ công hiện tại (3-5 bước):                      │
-│   1. ___ ──> 2. ___ ──> 3. ___ ──> 4. ___                   │
+│   1. Tài xế báo sự cố pin ──> 2. Điều phối viên tra cứu vị  │
+│   trí xe                                                    │
+│   3. Tìm trạm sạc gần nhất còn trụ trống ──> 4. Soạn tin    │
+│   nhắn hướng dẫn ──> 5. Gửi hoặc gọi xe cứu hộ              │
 │                                                             │
-│ Bước nào tốn thời gian/lỗi nhất? ___ (⏱ ___ phút/lượt)      │
-│ AI có thể nhảy vào hỗ trợ ở bước nào? _____________________ │
+│ Bước nào tốn thời gian/lỗi nhất? Bước 3-4 (⏱ 12 phút/lượt)  │
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Tự động tra cứu trạm  │
+│ sạc và soạn nháp tin nhắn cho điều phối viên.               │
 │                                                             │
-│ Đo thành công bằng gì (Metric có số)? ______________________ │
-│   VD: "Giảm thời gian soạn phản hồi từ 10 min ──> under 2 min"│
+│ Đo thành công bằng gì (Metric có số)? Giảm thời gian xử lý  │
+│ từ 15 phút xuống dưới 3 phút; đạt 90% độ chính xác trong    │
+│ đề xuất trạm sạc và an toàn.                                │
 │                                                             │
-│ Quick Architecture: [ ] No AI  [ ] Rule  [ ] LLM  [ ] Agent │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Quick Problem Card #2
+```text
+┌─────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #2                                       │
+│                                                             │
+│ Bài toán: So khớp hóa đơn sạc điện đối tác với dữ liệu hệ   │
+│ thống VinFast để phát hiện sai lệch và xử lý thanh toán.    │
+│ Công ty thành viên: [x] VinFast  [ ] Xanh SM  [ ] Vinhomes  │
+│                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
+│                                                             │
+│ Ai đang đau (Actor)? Nhân viên tài chính và vận hành phải   │
+│ đối chiếu hóa đơn sạc điện mỗi ngày.                        │
+│                                                             │
+│ Workflow thủ công hiện tại (3-5 bước):                      │
+│   1. Nhận hóa đơn đối tác ──> 2. Trích xuất dữ liệu sạc     │
+│   3. Đối chiếu với hệ thống nội bộ ──> 4. Tìm sai lệch      │
+│   5. Gửi phê duyệt hoặc hoàn tất thanh toán                 │
+│                                                             │
+│ Bước nào tốn thời gian/lỗi nhất? Bước 2-4 (⏱ 25-30 phút/lượt)│
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Trích xuất, so khớp   │
+│ và gợi ý mismatch từ hóa đơn với độ tự tin.                 │
+│                                                             │
+│ Đo thành công bằng gì (Metric có số)? Giảm thời gian xử lý  │
+│ từ 30 phút xuống còn dưới 8 phút; tăng độ chính xác lên     │
+│ trên 95%.                                                   │
+│                                                             │
+│ Quick Architecture: [ ] No AI  [x] Rule  [ ] LLM  [ ] Agent │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Quick Problem Card #3
+```text
+┌─────────────────────────────────────────────────────────────┐
+│ QUICK PROBLEM CARD #3                                       │
+│                                                             │
+│ Bài toán: Phân loại phản ánh cư dân tại Vinhomes và điều    │
+│ hướng tới ban quản lý phù hợp trong thời gian ngắn.         │
+│ Công ty thành viên: [ ] VinFast  [ ] Xanh SM  [x] Vinhomes  │
+│                     [ ] Vinmec   [ ] Khác (Ghi rõ)________  │
+│                                                             │
+│ Ai đang đau (Actor)? Nhân viên CSKH và ban quản lý tòa nhà  │
+│ phải xử lý khiếu nại của cư dân.                            │
+│                                                             │
+│ Workflow thủ công hiện tại (3-5 bước):                      │
+│   1. Cư dân gửi phản ánh ──> 2. Nhân viên đọc nội dung      │
+│   3. Phân loại loại sự cố ──> 4. Chuyển sang bộ phận tương  │
+│   ứng ──> 5. Soạn phản hồi hoặc lên lịch xử lý              │
+│                                                             │
+│ Bước nào tốn thời gian/lỗi nhất? Bước 2-4 (⏱ 15-20 phút/lượt)│
+│ AI có thể nhảy vào hỗ trợ ở bước nào? Tự động phân loại và  │
+│ draft phản hồi đầu tiên để giảm thời gian xử lý.            │
+│                                                             │
+│ Đo thành công bằng gì (Metric có số)? Giảm thời gian xử lý  │
+│ từ 20 phút xuống dưới 5 phút; tăng tỉ lệ route đúng tới     │
+│ ban quản lý lên 90%.                                        │
+│                                                             │
+│ Quick Architecture: [ ] No AI  [ ] Rule  [x] LLM  [ ] Agent │
 └─────────────────────────────────────────────────────────────┘
 ```
 
